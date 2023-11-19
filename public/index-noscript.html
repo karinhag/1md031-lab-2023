@@ -1,0 +1,97 @@
+<!DOCTYPE HTML>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Burger menu</title>
+    <meta charset="utf-8"/>
+</head>
+
+<body>
+    <header>
+        <div class="head">
+            <img id="headerpic" src="https://www.amsterdamredlightdistricttour.com/wp-content/uploads/2022/10/Best-Burger-Amsterdam.jpg" alt="Burger header" width="100%" height="auto">
+            <h1 id="headline">Welcome to BurgerOnline</h1>
+        </div>
+    </header>
+    <main>
+        <section id="burgerorder">
+            <h1> <font size= "+2">  <strong> Select burger </strong>
+            </font> </h1>
+            <div class="wrapper">
+                <div class="box a">
+                    Cheeseburger
+                    <img src="https://cdn-bk-se-ordering.azureedge.net/media/sryji43s/bkno0060_gourmet_triple_cheese_400x290_kiosk_produktbilde_singel_.png" alt="Cheeseburger" style="width:200px">
+                    <ul>
+                        <li class="allergy">Gluten</li>
+                        <li class="allergy">Lactose</li>
+                    </ul>
+                </div>
+                <div class="box b">
+                    Halloumi burger
+                    <img src="https://cdn-bk-se-ordering.azureedge.net/media/ut4ej4et/400x290_halloumi-king-_singel.png" alt="Halloumi burger" style="width:200px">
+                    <ul>
+                        <li class="allergy">Gluten</li>
+                        <li class="allergy">Lactose</li>
+                        <li class="veg">Vegetarian</li>
+                    </ul>
+                </div>
+                <div class="box c">
+                    Spicy Chicken Burger
+                    <img src="https://cdn-bk-se-ordering.azureedge.net/media/p0efl3e0/bk_chilicheesecrispychicken_400x290_singel.png" alt="Spicy Chicken buger" style="width:200px">
+                    <ul>
+                        <li class="allergy">Gluten free</li>
+                        <li class="allergy">Lactose free</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="customer">
+            <h1> <font size= "+2">  <strong> Customer information </strong>
+            </font> </h1>
+            <p>
+                <label for="name">First and last name</label><br>
+                <input type="text" id=name name="n" required="required" placeholder="First and last name">
+            </p>
+            <p>
+                <label for="email">E-mail Address</label><br>
+                <input type="text" id="email" name="em" placeholder="E-mail Address">
+            </p>
+            <p>
+                <label for="street">Street</label><br>
+                <input type="text" id="street" name="s" required="required" placeholder="Street">
+            </p>
+            <p>
+                <label for="housenumber">House Number</label><br>
+                <input type="number" id="housenumber" name="hn" required="required" placeholder="House number">
+            </p>
+            <p>
+                <label for="payment">Payment method</label><br>
+                <select id="payment" name="pm">
+                    <option selected="selected">Debit card</option>
+                    <option>Credit card </option>
+                    <option>Swish</option>
+                    <option>Invoice</option>
+                </select>
+            </p>
+            <p>
+                <label for="gender">Gender</label><br>
+                <input type="radio" id="female" name="gender" value="Female">
+                <label for="gender">Female</label><br>
+                <input type="radio" id="male" name="gender" value="Male">
+                <label for="gender">Male</label><br>
+                <input type="radio" id="not" name="gender" value="Do not wish to approve">
+                <label for="gender">Do not wish to approve</label>
+            </p>
+        </section>
+        <button type="submit">
+            <img src="https://t3.ftcdn.net/jpg/06/46/48/96/360_F_646489630_ElUY2WiCDbxrt1eJeo387cUYEy2SJLKf.jpg" alt="order button" style="width:90px">;
+        </button>
+    </main>
+    <hr>
+    <footer>
+        &copy; BurgerOnline 2023
+    </footer>
+</body>
+
+</html>

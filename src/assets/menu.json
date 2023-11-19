@@ -1,0 +1,26 @@
+[
+  {
+    "name": "Cheese Burger",
+    "kCal": 600,
+    "url": "https://cdn-bk-se-ordering.azureedge.net/media/sryji43s/bkno0060_gourmet_triple_cheese_400x290_kiosk_produktbilde_singel_.png",
+    "lactose": true,
+    "gluten": true,
+    "veg": false
+  },
+  {
+    "name": "Halloumi Burger",
+    "kCal": 500 ,
+    "url": "https://cdn-bk-se-ordering.azureedge.net/media/ut4ej4et/400x290_halloumi-king-_singel.png",
+    "lactose": true,
+    "gluten": true,
+    "veg": true
+  },
+  {
+    "name": "Chicken Burger",
+    "kCal": 400 ,
+    "url": "https://cdn-bk-se-ordering.azureedge.net/media/p0efl3e0/bk_chilicheesecrispychicken_400x290_singel.png",
+    "lactose": false,
+    "gluten": false,
+    "veg": false
+  }
+]
