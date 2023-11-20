@@ -2,8 +2,11 @@
     <div id="orders">
       <div id="orderList">
         <div v-for="(order, key) in orders" v-bind:key="'order'+key">
-          <div id="orderheader" v-for="(item, index) in order.orderItems" :key="'item' + index">
-            #{{ key }}: {{ item.name }}, {{ item.amount }}
+          <div id="orderheader">
+            #{{ key }}:
+          <span v-for="(item, index) in order.orderItems" :key="'item' + index">
+             {{ item.name }}, {{ item.amount }} |
+          </span>
           </div>
           <div id="orderinfo">
           Customer: {{ order.details.customerInfo.name }} |
@@ -15,7 +18,7 @@
         <button v-on:click="clearQueue">Clear Queue</button>
       </div>
       <div id="dots" v-bind:style="{ background: 'url(' + require('../../public/img/polacks.jpg')+ ')' }">
-          <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}" v-bind:key="'dots' + key">
+          <div v-for="(order, key) in orders" v-bind:style="{ left: order.details.location.x + 'px', top: order.details.location.y + 'px'}" v-bind:key="'dots' + key">
             {{ key }}
           </div>
       </div>
@@ -58,6 +61,7 @@
     margin: 0;
     padding: 0;
     background-repeat: no-repeat;
+    background-size: cover;
     width:1920px;
     height: 1078px;
     cursor: crosshair;
@@ -65,12 +69,13 @@
   
   #dots div {
     position: absolute;
-    background: black;
-    color: white;
+    background: indianred;
+    color: black;
     border-radius: 10px;
     width:20px;
     height:20px;
     text-align: center;
+    font-family: "Times New Roman";
   }
 
   #orderheader {

@@ -2,14 +2,14 @@
 
   <header>
     <div class="head">
-      <img id="headerpic" src="https://www.amsterdamredlightdistricttour.com/wp-content/uploads/2022/10/Best-Burger-Amsterdam.jpg" alt="Burger header" width="100%" height="auto">
+      <img id="headerpic" src="https://www.amsterdamredlightdistricttour.com/wp-content/uploads/2022/10/Best-Burger-Amsterdam.jpg" alt="Burger header" >
       <h1 id="headline">Welcome to BurgerOnline</h1>
     </div>
   </header>
   <main>
     <section id ="burgerorder">
       <div>
-        <h1>Burgers</h1>
+        <h1>Burger Menu</h1>
         <div class="wrapper">
           <Burger v-for="burger in burgers"
                   v-bind:burger="burger"
@@ -19,20 +19,7 @@
       </div>
       </section>
 
-    <section class="mapWrapper">
-      <div id="map" v-on:click="setLocation">
-        click here
-        <div id="dots">
-          <div v-bind:style="{position: absolute, left: location.x + 'px', top: location.y + 'px'}" v-bind:key="'dots' + key">
-            {{ key }}
-          </div>
-        </div>
-        <input type="text" v-bind:value="yourVariable" v-on:input="yourVariable = $event.target.value">
-        <div>
-          {{ yourVariable }}
-        </div>
-      </div>
-    </section>
+
 
     <section id="customer">
       <h1> <font size= "+2">  <strong> Customer information </strong>
@@ -64,6 +51,17 @@
         <input type="radio" id="not" v-model="customerInfo.gender" value="Do not wish to approve">
         <label for="gender">Do not wish to approve</label>
       </p>
+      <div id="addesstext">Please click on your address: </div>
+      <section class="mapWrapper">
+
+        <div id="map" v-on:click="setLocation">
+          <div id="dots">
+            <div v-bind:style="{position: absolute, left: location.x + 'px', top: location.y + 'px'}" v-bind:key="'dots' + key">
+              T
+            </div>
+          </div>
+        </div>
+      </section>
     </section>
     <button v-on:click="submit" type="submit">
       <img src="https://t3.ftcdn.net/jpg/06/46/48/96/360_F_646489630_ElUY2WiCDbxrt1eJeo387cUYEy2SJLKf.jpg" alt="order button" style="width:90px">;
@@ -101,6 +99,8 @@ const burgerArray = [
 ];
  console.log(burgerArray)
 
+
+
 export default {
   name: 'HomeView',
   components: {
@@ -108,7 +108,6 @@ export default {
   },
   data: function () {
     return {
-      yourVariable: "Välj en burgare",
       burgers: menu,
       customerInfo: {
         name: "",
@@ -120,7 +119,9 @@ export default {
       location: {
         x: 0,
         y: 0
-    }
+    },
+      orderNumber: 0,
+
     }
   },
   methods: {
@@ -186,6 +187,8 @@ export default {
   }
   .mapWrapper {
     overflow: scroll;
+    height: 400px;
+    background-color: white;
   }
   body {
     font-family: Futura;
@@ -210,18 +213,8 @@ export default {
     background-color: white;
   }
 
-  .allergy {
-    color: darkred;
-    font-size: smaller;
-    font-weight: bold;
-  }
-  .veg {
-    color: darkgreen;
-    font-size: smaller;
-  }
-
   button:hover {
-    background-color: mediumvioletred;
+    background-color: indianred;
     cursor: pointer;
   }
 
@@ -248,28 +241,31 @@ export default {
     overflow: hidden;
     width: 100%;
     font-size: 150%;
-    text-align: center;
-
 
   }
   #headerpic {
     opacity: 0.4;
     background-size: cover;
-
+    background: url("https://www.amsterdamredlightdistricttour.com/wp-content/uploads/2022/10/Best-Burger-Amsterdam.jpg");
 
   }
   #headline {
-    text-align: center;
     position: absolute;
-    margin-top: -600px;
+    margin-top: -630px;
+    margin-left: 30px;
     text-align: center;
-    font-size: 200%;
-    color: darkred;
+    font-size: 280%;
+    color: white;
+    text-shadow: 0 0 20px aquamarine, 0 0 30px deeppink;
   }
   .wrapper {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: 33.3% 33.3% 33.3%;
+  }
+  #addesstext {
+    margin: 20px 100px;
+    font-size: 120%;
   }
 
   html {
