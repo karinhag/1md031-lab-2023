@@ -22,14 +22,14 @@
 
 
     <section id="customer">
-      <h1> <font size= "+2">  <strong> Customer information </strong>
+      <h1> <font size= "+2">  <strong> Customer Information </strong>
       </font> </h1>
       <p>
-        <label for="name">First and last name</label><br>
+        <label for="name">Full name</label><br>
         <input type="text" id=name v-model="customerInfo.name" required="required" placeholder="First and last name">
       </p>
       <p>
-        <label for="email">E-mail Address</label><br>
+        <label for="email">E-mail address</label><br>
         <input type="text" id="email" v-model="customerInfo.email" placeholder="E-mail Address">
       </p>
 
@@ -51,7 +51,7 @@
         <input type="radio" id="not" v-model="customerInfo.gender" value="Do not wish to approve">
         <label for="gender">Do not wish to approve</label>
       </p>
-      <div id="addesstext">Please click on your address: </div>
+      <div id="addesstext">Please click on your delivery address: </div>
       <section class="mapWrapper">
 
         <div id="map" v-on:click="setLocation">
@@ -108,6 +108,7 @@ export default {
   },
   data: function () {
     return {
+      orderID: 0,
       burgers: menu,
       customerInfo: {
         name: "",
@@ -124,10 +125,21 @@ export default {
 
     }
   },
+  created: function () {
+    // Retrieve the order ID from localStorage on component creation
+    const savedOrderID = localStorage.getItem('orderID');
+    if (savedOrderID) {
+      this.orderID = parseInt(savedOrderID, 10);
+    }
+  },
   methods: {
     getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
+      this.orderID++;
+      // Save the updated order ID to localStorage
+      localStorage.setItem('orderID', this.orderID.toString());
+      return this.orderID;
     },
+
     addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
@@ -135,8 +147,8 @@ export default {
         x: event.clientX - 10 -offset.x,
         y: event.clientY - 10 - offset.y
       };
-
     },
+
     submit: function() {
       console.log('Customer Information:', this.customerInfo);
       console.log('Ordered Burgers: ', JSON.parse(JSON.stringify(this.orderedBurgers)));
@@ -149,6 +161,7 @@ export default {
         orderItems: this.orderedBurgers
           },
       );
+      this.clearForm();
     },
     addToOrder: function (event) {
       const {name, amount} = event;
@@ -170,10 +183,15 @@ export default {
         x: event.clientX - 10 -offset.x,
         y: event.clientY - 10 - offset.y
       };
-
-
+    },
+    clearForm: function() {
+      this.customerInfo.name = "";
+      this.customerInfo.email= "";
+      this.customerInfo.payment="Debit card";
+      this.customerInfo.gender="female";
+      this.orderedBurgers = [];
+      this.location = {x: 0, y: 0};
     }
-
   }
 }
 </script>
@@ -202,11 +220,13 @@ export default {
     border: 10px groove;
     border-color: indianred;
     padding: 20px;
+    font-family: Futura;
 
   }
 
   #burgerorder {
     padding: 20px;
+    padding-right: 35px;
     border: 10px groove;
     border-color: indianred;
     margin: 20px 100px;
@@ -266,6 +286,7 @@ export default {
   #addesstext {
     margin: 20px 100px;
     font-size: 120%;
+    background-color: lightpink;
   }
 
   html {

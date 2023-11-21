@@ -5,7 +5,9 @@
           <div id="orderheader">
             #{{ key }}:
           <span v-for="(item, index) in order.orderItems" :key="'item' + index">
-             {{ item.name }}, {{ item.amount }} |
+            <span v-if="item.amount > 0">
+              {{ item.amount }} {{ item.name }},
+            </span>
           </span>
           </div>
           <div id="orderinfo">

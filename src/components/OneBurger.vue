@@ -3,13 +3,13 @@
     <div class ="box a">
       <div class="burgerName">{{ burger.name }} </div>
     <img v-bind:src="burger.url" alt="burger.name" style="width:200px;">
-     <div id="caltext">Contains {{burger.kCal}} kCal </div>
       <ul>
+        <li id="caltext">Containts {{burger.kCal}} kCal </li>
       <li class="allergy" v-if="burger.gluten">Gluten</li>
       <li class="allergy" v-if="burger.lactose">Lactose</li>
       <li class="veg" v-if="burger.veg">Vegetarian</li>
     </ul>
-      Amount ordered: {{amountOrdered}}
+      <div id="ordertext">Amount ordered: {{amountOrdered}}</div>
       <button v-on:click="increase" type="button">+
       </button>
       <button v-on:click="decrease" type="button">-
@@ -42,7 +42,7 @@
       decrease() {
         if (this.amountOrdered > 0) {
           this.amountOrdered -= 1;
-          this.$emit('orderedBurgers',{name: this.burger.name, amount: this.amountOrdered});
+          this.$emit('orderedBurger',{name: this.burger.name, amount: this.amountOrdered});
           console.log('Burger removed:', this.burger.name);
         }
         else {
@@ -63,10 +63,13 @@
     color: darkred;
     font-size: smaller;
     font-weight: bold;
+    font-family: Verdana ;
   }
   .veg {
     color: darkgreen;
     font-size: smaller;
+    font-weight: bold;
+    font-family: Verdana;
   }
 
 
@@ -84,10 +87,21 @@
     margin: 20px;
     font-size: 150%;
     white-space: nowrap;
-
+    font-weight: bold;
   }
   #caltext {
+    font-family: Verdana;
+    font-weight: bold;
     text-align: center;
+    font-size: smaller
+  ;
+  }
+  #ordertext {
+    font-family: Verdana;
+    font-size: smaller;
+    font-weight: bold;
+    color: indianred;
+
   }
   button {
     margin: 5px;
